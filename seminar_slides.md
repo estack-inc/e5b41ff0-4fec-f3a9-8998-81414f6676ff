@@ -9,7 +9,8 @@
 2. **Claude Code 環境構築** (10分)
 3. **サンプルプログラム改修** (10分)
 4. **Claude Code でできること** (5分)
-5. **ハンズオン** (2時間30分)
+5. **既存プロジェクトへの活用** (10分)
+6. **ハンズオン** (2時間20分)
 
 <div style="color: #F29702; font-weight: bold;">
 合計：3時間
@@ -285,7 +286,248 @@ claude
 
 ---
 
-## 第5部：ハンズオン準備
+## 第5部：既存プロジェクトへの活用
+
+### 既存プロジェクトで Claude Code を使う
+
+#### なぜ重要？
+- 🔧 **実際の開発**は新規プロジェクトよりも既存コードの改修が多い
+- 📚 **プロジェクト固有**のルールやコンテキストを理解させる必要
+- ⚡ **効率的な開発**のために AI にプロジェクトを理解してもらう
+
+---
+
+### claude init コマンド
+
+既存プロジェクトを Claude Code に理解させるための初期化コマンド
+
+```bash
+# プロジェクトのルートディレクトリで実行
+claude init
+
+# 実行すると以下が生成される
+# - CLAUDE.md: プロジェクト固有の指示書
+# - .claudeignore: 無視するファイル/ディレクトリ
+```
+
+<div style="background: #fff3cd; padding: 10px; border-left: 4px solid #F29702; margin: 10px 0;">
+💡 <strong>ポイント</strong>: init は初回のみ実行。以降は CLAUDE.md を編集して調整
+</div>
+
+---
+
+### CLAUDE.md の活用
+
+#### CLAUDE.md とは？
+プロジェクト固有の指示書。Claude Code が従うべきルールを記述
+
+#### 記載すべき内容
+```markdown
+# プロジェクト概要
+- アプリケーションの目的
+- 技術スタック
+- アーキテクチャの概要
+
+# コーディング規約
+- 命名規則
+- インデント（タブ vs スペース）
+- コメントの書き方
+
+# プロジェクト固有のルール
+- 使用するフレームワークのバージョン
+- 避けるべきパターン
+- 推奨されるライブラリ
+```
+
+---
+
+### CLAUDE.md の実例
+
+```markdown
+# E-Commerce プロジェクト
+
+## 技術スタック
+- Frontend: React 18 + TypeScript
+- Backend: Node.js + Express
+- Database: PostgreSQL
+
+## コーディング規約
+- インデント: スペース2つ
+- 命名規則: camelCase（変数・関数）、PascalCase（コンポーネント）
+- セミコロン: 必須
+
+## 重要な制約
+- 新しい依存関係を追加する際は必ず確認
+- APIエンドポイントは RESTful に準拠
+- テストファイルは *.test.ts で統一
+
+## プロジェクト構造
+src/
+├── components/  # React コンポーネント
+├── services/    # API 通信ロジック
+├── utils/       # ユーティリティ関数
+└── types/       # TypeScript 型定義
+```
+
+---
+
+### .claudeignore の設定
+
+#### 無視すべきファイル
+```gitignore
+# ビルド成果物
+dist/
+build/
+*.min.js
+
+# 依存関係
+node_modules/
+vendor/
+
+# 環境固有ファイル
+.env
+.env.local
+
+# 大きなバイナリファイル
+*.zip
+*.tar.gz
+*.mp4
+
+# ログファイル
+*.log
+logs/
+```
+
+<div style="color: #F29702;">
+💡 Git の .gitignore と似た形式で記述可能
+</div>
+
+---
+
+### 既存プロジェクトでの実践例
+
+#### Step 1: 初期化
+```bash
+cd my-existing-project
+claude init
+```
+
+#### Step 2: CLAUDE.md を編集
+```bash
+# エディタで開いて編集
+code CLAUDE.md
+```
+
+#### Step 3: Claude Code を起動
+```bash
+claude
+```
+
+#### Step 4: プロジェクトを理解させる
+```
+"このプロジェクトの構造と主要な機能を教えてください"
+```
+
+---
+
+### プロジェクト理解のための質問例
+
+#### 初回の確認
+```
+"package.json を読んで、使用している主要なライブラリを教えてください"
+```
+
+#### アーキテクチャ理解
+```
+"src ディレクトリの構造を確認して、
+このプロジェクトのアーキテクチャパターンを説明してください"
+```
+
+#### 既存コードの分析
+```
+"エラーハンドリングの実装パターンを既存コードから学習して、
+同じパターンで新しい機能を実装してください"
+```
+
+---
+
+### 効果的な活用パターン
+
+#### 1. バグ修正
+```
+"TypeError: Cannot read property 'map' of undefined
+というエラーが UserList コンポーネントで発生しています。
+既存のエラーハンドリングパターンに従って修正してください"
+```
+
+#### 2. 機能追加
+```
+"既存の User モデルを参考に、Product モデルを作成してください。
+同じ設計パターンとバリデーションルールを適用してください"
+```
+
+#### 3. リファクタリング
+```
+"DashboardComponent が大きくなりすぎています。
+既存のコンポーネント分割パターンに従って、
+適切に分割してください"
+```
+
+---
+
+### チーム開発での活用
+
+#### CLAUDE.md の共有
+```bash
+# Git で管理
+git add CLAUDE.md .claudeignore
+git commit -m "Add Claude Code configuration"
+git push
+```
+
+#### チームルールの統一
+- コーディング規約を CLAUDE.md に明記
+- レビュー観点を記載
+- 禁止事項を明確化
+
+<div style="background: #e8f4fd; padding: 15px; border-left: 4px solid #2196F3; margin: 10px 0;">
+<strong>メリット</strong>: チーム全員が同じルールで AI を活用できる
+</div>
+
+---
+
+### よくある質問
+
+#### Q: CLAUDE.md は Git にコミットすべき？
+**A**: はい。チーム全体で共有することで開発効率が向上します
+
+#### Q: .claudeignore と .gitignore の違いは？
+**A**: .claudeignore は Claude Code が読まないファイル、.gitignore は Git が管理しないファイル
+
+#### Q: 既存の大規模プロジェクトでも使える？
+**A**: はい。ただし、.claudeignore で不要なファイルを除外することが重要
+
+---
+
+### 実際の導入効果
+
+#### Before（Claude Code なし）
+- 新メンバーのオンボーディング：**2週間**
+- バグ修正の平均時間：**3時間**
+- コードレビューの手戻り率：**40%**
+
+#### After（Claude Code あり）
+- 新メンバーのオンボーディング：**3日**
+- バグ修正の平均時間：**30分**
+- コードレビューの手戻り率：**10%**
+
+<div style="color: #F29702; font-weight: bold; text-align: center;">
+開発効率が大幅に向上！
+</div>
+
+---
+
+## 第6部：ハンズオン準備
 
 ### 本日作成するアプリ
 
