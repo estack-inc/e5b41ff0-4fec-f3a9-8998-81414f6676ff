@@ -76,7 +76,7 @@ brew --version
 
 ### 2. Claude CLI のインストール
 ```bash
-brew install claude
+brew install claude-code
 claude --version
 ```
 
