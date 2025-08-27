@@ -11,7 +11,7 @@
 ```bash
 # このディレクトリで Claude Code を起動
 cd ~/Desktop/handson_project
-claude code
+claude
 ```
 
 ### 2. プロジェクトの作成
