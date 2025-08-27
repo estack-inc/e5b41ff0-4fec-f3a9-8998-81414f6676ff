@@ -129,7 +129,7 @@ claude auth set-key
 claude chat "こんにちは、今日は良い天気ですね"
 
 # プロジェクトモードで起動
-claude code
+claude
 ```
 
 成功すると Claude Code のインタラクティブモードが起動します！
@@ -171,7 +171,7 @@ VSCode をお使いの方は拡張機能版も利用可能
 cd sample_project
 
 # Claude Code を起動
-claude code
+claude
 
 # 自然言語で指示
 "index.html と script.js を読んで、カウンターが動かないバグを修正してください"
@@ -423,7 +423,7 @@ claude code
 cd ~/Desktop
 mkdir pomodoro-timer
 cd pomodoro-timer
-claude code
+claude
 ```
 
 </div>
