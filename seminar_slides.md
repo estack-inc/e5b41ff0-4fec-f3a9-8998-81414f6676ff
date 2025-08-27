@@ -107,11 +107,39 @@ claude --version
 
 ---
 
-### Step 3: API キーの設定
+### Step 3: Claude Console アカウント作成
+
+#### アカウント登録手順
 
 1. <a href="https://console.anthropic.com" target="_blank">Claude Console</a> にアクセス
-2. API Keys セクションから新規キー作成
-3. ターミナルで設定
+2. 「Continue with Google」をクリック
+3. **弊社 Google Workspace アカウント**でログイン
+   - メールアドレス: yourname@company.com
+   - パスワード: Google Workspace のパスワード
+
+<div style="background: #d4edda; padding: 10px; border-left: 4px solid #28a745; margin: 10px 0;">
+✅ <strong>重要</strong>: 事前に IT 管理者から Google Workspace アカウントへの招待を受けてください
+</div>
+
+4. 利用規約に同意して続行
+5. Claude Console のダッシュボードが表示されれば成功
+
+---
+
+### Step 4: API キーの生成と設定
+
+#### API キーの生成
+
+1. Claude Console にログイン後、左メニューの「API Keys」をクリック
+2. 「Create Key」ボタンをクリック
+3. キーの名前を入力（例: "seminar-dev"）
+4. 生成された API キー（sk-ant-xxx...）をコピー
+
+<div style="background: #f8d7da; padding: 10px; border-left: 4px solid #dc3545; margin: 10px 0;">
+⚠️ <strong>注意</strong>: API キーは一度しか表示されません。安全な場所に保存してください
+</div>
+
+#### API キーの設定
 
 ```bash
 # API キーを設定
@@ -123,7 +151,7 @@ claude auth set-key
 
 ---
 
-### Step 4: 動作確認
+### Step 5: 動作確認
 
 ```bash
 # 簡単な質問で動作確認

@@ -80,10 +80,22 @@ brew install claude
 claude --version
 ```
 
-### 3. API キーの取得
+### 3. Claude Console アカウント作成と API キーの取得
+
+#### アカウント作成
 1. <a href="https://console.anthropic.com" target="_blank">Claude Console</a> にアクセス
-2. API Keys セクションで新規キー作成
-3. 安全な場所に保存
+2. 「Continue with Google」をクリック
+3. **弊社 Google Workspace アカウント**でログイン
+   - 事前に IT 管理者から招待を受けてください
+   - メールアドレス: yourname@company.com
+4. 利用規約に同意して続行
+
+#### API キーの生成
+1. Claude Console にログイン後、「API Keys」セクションへ
+2. 「Create Key」ボタンをクリック
+3. キーの名前を入力（例: "seminar-dev"）
+4. 生成された API キー（sk-ant-xxx...）を安全な場所に保存
+   - **注意**: API キーは一度しか表示されません
 
 ## セミナー当日の流れ
 
