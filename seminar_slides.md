@@ -108,7 +108,7 @@ claude --version
 
 ### Step 3: API キーの設定
 
-1. [Claude Console](https://console.anthropic.com) にアクセス
+1. <a href="https://console.anthropic.com" target="_blank">Claude Console</a> にアクセス
 2. API Keys セクションから新規キー作成
 3. ターミナルで設定
 
